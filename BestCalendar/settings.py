@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-2zc16%4n5jh%^p0cv8gn-17(kdbg8aip_87i#$826f@p0lmimk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['161.35.85.238', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '167.99.58.239']
 
 AUTH_USER_MODEL = 'base.CustomUser'
 
@@ -82,10 +82,21 @@ WSGI_APPLICATION = 'BestCalendar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'newdb',
+        'USER': 'newuser',
+        'PASSWORD': 'newpassword',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -126,7 +137,8 @@ USE_TZ = True
 import os
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = BASE_DIR/'static'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Add or update STATIC_ROOT
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
